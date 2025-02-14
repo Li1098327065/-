@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>业务领域 - 广东宗泽建工园林有限公司</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .content {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-direction: column;
+        }
+        .section img {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            cursor: pointer;
+            transition: opacity 0.5s;
+        }
+        .section .next-img {
+            position: absolute;
+            top: 50%;
+            right: -10%;
+            transform: translateY(-50%);
+            width: 12%;
+            max-width: 100px;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .section-text {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #343a40;
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+    <script>
+        function changeImage(sectionId, images) {
+            let index = 0;
+            const imgElement = document.getElementById(sectionId);
+            const nextImgElement = document.getElementById(sectionId + "-next");
+            imgElement.addEventListener('click', function() {
+                index = (index + 1) % images.length;
+                imgElement.src = images[index];
+                nextImgElement.src = images[(index + 1) % images.length];
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            changeImage('landscape_construction', ['static/images/business/landscape_construction1.png', 'static/images/business/landscape_construction2.png']);
+            changeImage('landscape_design', ['static/images/business/landscape_design1.png', 'static/images/business/landscape_design2.png']);
+            changeImage('decoration_engineering', ['static/images/business/decoration_engineering1.png', 'static/images/business/decoration_engineering2.png']);
+            changeImage('housing_public_works', ['static/images/business/housing_public_works1.png', 'static/images/business/housing_public_works2.png']);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>业务领域</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">首页</a></li>
+                <li><a href="{{ url_for('about') }}">关于我们</a></li>
+                <li><a href="{{ url_for('business') }}">业务领域</a></li>
+                <li><a href="{{ url_for('service') }}">服务中心</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="content">
+        <div class="section">
+            <img id="landscape_construction" src="static/images/business/landscape_construction1.png" alt="园林景观施工工程">
+            <img id="landscape_construction-next" class="next-img" src="static/images/business/landscape_construction2.png" alt="下一张">
+            <div class="section-text">
+                <h2>01 园林景观施工工程</h2>
+                <p>Landscape Construction Project</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <img id="landscape_design" src="static/images/business/landscape_design1.png" alt="园林景观设计工程">
+            <img id="landscape_design-next" class="next-img" src="static/images/business/landscape_design2.png" alt="下一张">
+            <div class="section-text">
+                <h2>02 园林景观设计工程</h2>
+                <p>Landscape Design Project</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <img id="decoration_engineering" src="static/images/business/decoration_engineering1.png" alt="室内装修装饰工程">
+            <img id="decoration_engineering-next" class="next-img" src="static/images/business/decoration_engineering2.png" alt="下一张">
+            <div class="section-text">
+                <h2>03 室内装修装饰工程</h2>
+                <p>Decoration Engineering Project</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <img id="housing_public_works" src="static/images/business/housing_public_works1.png" alt="房建及市政工程">
+            <img id="housing_public_works-next" class="next-img" src="static/images/business/housing_public_works2.png" alt="下一张">
+            <div class="section-text">
+                <h2>04 房建及市政工程</h2>
+                <p>Housing And Public Works</p>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <footer>
+        <p>&copy; 2025 广东宗泽建工园林有限公司. 地址：珠海市香洲区凤凰北路2099号安广世纪大厦.</p>
+    </footer>
+</body>
+</html>

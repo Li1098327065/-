@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广东宗泽建工园林有限公司</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('static/images/微信图片_202206201444251.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .intro {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 40px;
+            max-width: 80%;
+            margin: 100px auto;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 20px;
+        }
+        .intro h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .intro p {
+            line-height: 1.8;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>广东宗泽建工园林有限公司</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">首页</a></li>
+                <li><a href="{{ url_for('about') }}">关于我们</a></li>
+                <li><a href="{{ url_for('business') }}">业务领域</a></li>
+                <li><a href="{{ url_for('service') }}">服务中心</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    
+    <section id="homepage">
+        <div class="intro">
+            <h2>集团简介</h2>
+            <p>广东宗泽建工园林有限公司主要从事工程园林建设、景观设计、绿化工程、装饰装修以及市政土建等工程建设，为园林客户提供景观及装修工程整体解决方案与综合性工程技术开发服务，具体包括工程咨询、工程设计、工程承包、工程维护、苗木提供、园林设备租赁等多种服务。注册资本金为2020万元人民币，办公地点位于珠海市香洲区凤凰北路2099号安广世纪大厦，环境优美，交通便利。
+                    经过十多年的不懈努力，广东宗泽取得突破性的进展，业务范畴覆盖了公共绿地建设、工业绿化、城市景观、高档社区景观设计及建设、市政工程、写字楼装修等领域。特别是在景观设计、园林建设、室内装修等领域形成了具有自己特色的工程技术及工程管理特色，取得良好的实效，为客户物业增值。</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 广东宗泽建工园林有限公司. 地址：珠海市香洲区凤凰北路2099号安广世纪大厦.</p>
+    </footer>
+</body>
+</html>
