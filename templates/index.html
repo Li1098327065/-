@@ -6,59 +6,137 @@
     <title>广东宗泽建工园林有限公司</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* 页面整体风格 */
         body {
-            background-image: url('static/images/微信图片_202206201444251.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), 
+                        url('static/images/微信图片_202206201444251.jpg') no-repeat center center/cover;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background: rgba(0, 0, 0, 0.6);
+            font-family: 'Arial', sans-serif;
             color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
         }
+
+        /* 头部导航栏 */
+        header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
-            text-align: center;
+            display: flex;
+            margin: 0;
         }
+
         nav ul li {
-            display: inline;
             margin: 0 15px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
         }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 标题动画 */
+        .hero {
+            text-align: center;
+            padding: 150px 20px 100px;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: lighter;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 介绍板块 */
         .intro {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             padding: 40px;
             max-width: 80%;
-            margin: 100px auto;
+            margin: 50px auto;
             border-radius: 10px;
             text-align: left;
-            font-size: 20px;
+            font-size: 18px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards 1s;
         }
+
         .intro h2 {
             font-size: 28px;
             font-weight: bold;
             margin-bottom: 15px;
         }
+
         .intro p {
             line-height: 1.8;
         }
+
+        /* 按钮样式 */
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+        }
+
+        .button:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        /* 页脚 */
         footer {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             position: relative;
             bottom: 0;
@@ -67,8 +145,9 @@
     </style>
 </head>
 <body>
+
     <header>
-        <h1>广东宗泽建工园林有限公司</h1>
+        <h2>广东宗泽建工园林有限公司</h2>
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">首页</a></li>
@@ -77,19 +156,23 @@
                 <li><a href="{{ url_for('service') }}">服务中心</a></li>
             </ul>
         </nav>
-        
     </header>
-    
-    <section id="homepage">
-        <div class="intro">
-            <h2>集团简介</h2>
-            <p>广东宗泽建工园林有限公司主要从事工程园林建设、景观设计、绿化工程、装饰装修以及市政土建等工程建设，为园林客户提供景观及装修工程整体解决方案与综合性工程技术开发服务，具体包括工程咨询、工程设计、工程承包、工程维护、苗木提供、园林设备租赁等多种服务。注册资本金为2020万元人民币，办公地点位于珠海市香洲区凤凰北路2099号安广世纪大厦，环境优美，交通便利。
-                    经过十多年的不懈努力，广东宗泽取得突破性的进展，业务范畴覆盖了公共绿地建设、工业绿化、城市景观、高档社区景观设计及建设、市政工程、写字楼装修等领域。特别是在景观设计、园林建设、室内装修等领域形成了具有自己特色的工程技术及工程管理特色，取得良好的实效，为客户物业增值。</p>
-        </div>
+
+    <section class="hero">
+        <h1>致力于建筑与园林行业的创新</h1>
+        <p>高效施工 · 现代设计 · 智能园林</p>
     </section>
-    
+
+    <section class="intro">
+        <h2>集团简介</h2>
+        <p>广东宗泽建工园林有限公司主要从事工程园林建设、景观设计、绿化工程、装饰装修以及市政土建等工程建设，为园林客户提供景观及装修工程整体解决方案与综合性工程技术开发服务，具体包括工程咨询、工程设计、工程承包、工程维护、苗木提供、园林设备租赁等多种服务。注册资本金为2020万元人民币，办公地点位于珠海市香洲区凤凰北路2099号安广世纪大厦，环境优美，交通便利。
+            经过十多年的不懈努力，广东宗泽取得突破性的进展，业务范畴覆盖了公共绿地建设、工业绿化、城市景观、高档社区景观设计及建设、市政工程、写字楼装修等领域。特别是在景观设计、园林建设、室内装修等领域形成了具有自己特色的工程技术及工程管理特色，取得良好的实效，为客户物业增值。</p>
+        <a href="{{ url_for('about') }}" class="button">了解更多</a>
+    </section>
+
     <footer>
         <p>&copy; 2025 广东宗泽建工园林有限公司. 地址：珠海市香洲区凤凰北路2099号安广世纪大厦.</p>
     </footer>
+
 </body>
 </html>

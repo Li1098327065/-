@@ -7,96 +7,118 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), 
+                        url('static/images/business_background.jpg') no-repeat center center/cover;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: white;
         }
         header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            color: white;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
         nav ul {
             list-style: none;
             padding: 0;
             display: flex;
+            margin: 0;
         }
         nav ul li {
             margin: 0 15px;
         }
         nav ul li a {
-            color: black;
+            color: white;
             text-decoration: none;
-            font-weight: bold;
             font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .hero {
+            text-align: center;
+            padding: 150px 20px 100px;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+        .hero h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 20px;
+            font-weight: lighter;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .content {
             max-width: 1000px;
             margin: 50px auto;
-            padding: 20px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards 1s;
         }
         .section {
-            background: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            flex-direction: column;
+            text-align: center;
+            margin-bottom: 40px;
         }
         .section img {
             width: 80%;
             max-width: 800px;
             height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
             cursor: pointer;
-            transition: opacity 0.5s;
         }
-        .section .next-img {
-            position: absolute;
-            top: 50%;
-            right: -10%;
-            transform: translateY(-50%);
-            width: 12%;
-            max-width: 100px;
-            opacity: 0.7;
-            pointer-events: none;
-        }
-        .section-text {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .back-button {
-            display: block;
-            width: fit-content;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background: black;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
+        .section img:hover {
+            transform: scale(1.05);
         }
         footer {
             text-align: center;
             padding: 20px;
-            background: #343a40;
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            margin-top: 50px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
     <script>
         function changeImage(sectionId, images) {
             let index = 0;
             const imgElement = document.getElementById(sectionId);
-            const nextImgElement = document.getElementById(sectionId + "-next");
             imgElement.addEventListener('click', function() {
                 index = (index + 1) % images.length;
                 imgElement.src = images[index];
-                nextImgElement.src = images[(index + 1) % images.length];
             });
         }
         
@@ -110,7 +132,7 @@
 </head>
 <body>
     <header>
-        <h1>业务领域</h1>
+        <h2>广东宗泽建工园林有限公司</h2>
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">首页</a></li>
@@ -120,47 +142,32 @@
             </ul>
         </nav>
     </header>
-    
+    <section class="hero">
+        <h1>业务领域</h1>
+        <p>专注于园林景观、工程施工与创新建筑方案</p>
+    </section>
     <div class="content">
         <div class="section">
             <img id="landscape_construction" src="static/images/business/landscape_construction1.png" alt="园林景观施工工程">
-            <img id="landscape_construction-next" class="next-img" src="static/images/business/landscape_construction2.png" alt="下一张">
-            <div class="section-text">
-                <h2>01 园林景观施工工程</h2>
-                <p>Landscape Construction Project</p>
-            </div>
+            <h2>01 园林景观施工工程</h2>
+            <p>Landscape Construction Project</p>
         </div>
-
         <div class="section">
             <img id="landscape_design" src="static/images/business/landscape_design1.png" alt="园林景观设计工程">
-            <img id="landscape_design-next" class="next-img" src="static/images/business/landscape_design2.png" alt="下一张">
-            <div class="section-text">
-                <h2>02 园林景观设计工程</h2>
-                <p>Landscape Design Project</p>
-            </div>
+            <h2>02 园林景观设计工程</h2>
+            <p>Landscape Design Project</p>
         </div>
-
         <div class="section">
             <img id="decoration_engineering" src="static/images/business/decoration_engineering1.png" alt="室内装修装饰工程">
-            <img id="decoration_engineering-next" class="next-img" src="static/images/business/decoration_engineering2.png" alt="下一张">
-            <div class="section-text">
-                <h2>03 室内装修装饰工程</h2>
-                <p>Decoration Engineering Project</p>
-            </div>
+            <h2>03 室内装修装饰工程</h2>
+            <p>Decoration Engineering Project</p>
         </div>
-
         <div class="section">
             <img id="housing_public_works" src="static/images/business/housing_public_works1.png" alt="房建及市政工程">
-            <img id="housing_public_works-next" class="next-img" src="static/images/business/housing_public_works2.png" alt="下一张">
-            <div class="section-text">
-                <h2>04 房建及市政工程</h2>
-                <p>Housing And Public Works</p>
-            </div>
+            <h2>04 房建及市政工程</h2>
+            <p>Housing And Public Works</p>
         </div>
     </div>
-    
-
-    
     <footer>
         <p>&copy; 2025 广东宗泽建工园林有限公司. 地址：珠海市香洲区凤凰北路2099号安广世纪大厦.</p>
     </footer>
